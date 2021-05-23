@@ -27,12 +27,12 @@
       template: '<button v-on:click="addNumber">add</button>',
       methods: {
         addNumber: function() {
-          this.$emit('increase')
+          this.$emit('increase');
         }
       }
     }
 
-    new Vue({
+    var vm = new Vue({
       el: '#app',
       components: {
         'app-header': appHeader,
@@ -44,6 +44,9 @@
         },
         increaseNumber: function() {
           this.num = this.num + 1;
+          // js this
+          // https://www.w3schools.com/js/js_this.asp
+          // https://betterprogramming.pub/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8
         }
       },
       data: {
