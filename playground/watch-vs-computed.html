@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{ num }}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    // https://vuejs.org/v2/guide/computed.html#ad
+    // 요약 : 웬만하면 computed를 사용하는 것이 좋다
+    new Vue({
+      el: '#app',
+      data: {
+        num: 10
+      },
+      // validation 또는 간단한 텍스트 연산이 필요할 때 사용
+      computed: {
+        doubleNum: function() {
+          return this.num * 2;
+        }
+      },
+      // 무거운 로직. 매번 실행되기 부담스러운 로직(데이터 요청) => 메서드로 엮어주면 좋을 듯
+      watch: {
+        num: function(newValue, oldValue) {
+          this.fetchUserByNumber(newValue);
+        }
+      },
+      methods: {
+        fetchUserByNumber: function(num) {
+          console.log(num);
+          // axios.get(num);
+        }
+      }
+    })
+  </script>
+</body>
+</html>
