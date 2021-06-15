@@ -1,28 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <!-- <AppHeader :프롭스 속성 이름="상위 컴포넌트의 데이터 이름"/> -->
+    <AppHeader v-bind:propsdata="str" v-on:renew="renewStr"/>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang='ts'>
+import Vue from 'vue';
+import AppHeader from './components/AppHeader.vue';
 
-export default {
-  name: 'App',
+export default Vue.extend({
   components: {
-    HelloWorld
+    AppHeader,
+  },
+  data() {
+    return {
+      str: 'Header'
+    };
+  },
+  methods: {
+    renewStr() {
+      this.str = 'hi';
+    },
   }
-}
+});
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang='scss' scoped>
+
 </style>
